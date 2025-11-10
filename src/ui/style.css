@@ -1,2 +1,4 @@
 body { font-family: Arial; background-color: #f8fafc; color: #333; }
 h1 { color: #2b6cb0; }
+.widget{margin:16px}
+.card{padding:16px;border-radius:8px}
