@@ -7,3 +7,4 @@ def sync_data():
 # FEAT-104: Added alert summarisation logging
 # FEAT-104: Added alert summarisation logging
 # FEAT-104: Added alert summarisation logging
+# FEAT-110: Added alert summarisation logging
