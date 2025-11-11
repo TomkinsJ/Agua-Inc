@@ -1,17 +1,11 @@
 #!/bin/bash
-# Usage: ./cleanup.sh <branch-name>
-# Example: ./cleanup.sh CU-86c6e3bk2_FEAT-110-Accessibility-Enhancements_John-Tomkins
+# cleanup.sh – deletes the local and remote branch used in the demo
 
-BRANCH_TO_DELETE="$1"
-
-if [ -z "$BRANCH_TO_DELETE" ]; then
-  echo "Usage: ./cleanup.sh <branch-name>"
-  exit 1
-fi
+BRANCH_TO_DELETE="CU-86c6e3bk2_FEAT-110-Accessibility-Enhancements_John-Tomkins"
 
 echo "Cleaning up branch: $BRANCH_TO_DELETE"
 
-# Switch to main branch
+# Switch to main
 git checkout main || exit 1
 git pull
 
