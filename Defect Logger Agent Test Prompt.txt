@@ -1,0 +1,1 @@
+I've found a bug. The Smart Sensor Dashboard crashes when I switch between regions.
