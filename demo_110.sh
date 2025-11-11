@@ -1,31 +1,31 @@
 #!/bin/bash
-
-# Fail fast if something goes wrong
 set -e
 
-echo "----------------------------------------"
-echo "Creating new feature branch..."
-git checkout -b "CU-86c6e3bk2_FEAT-110-Accessibility-Enhancements_John-Tomkins"
+TASK_ID="CU-86c6e3bk2"
+BRANCH="CU-86c6e3bk2_FEAT-110-Accessibility-Enhancements_John-Tomkins"
+BASE="main"
+STAMP=$(date +%Y%m%d-%H%M%S)
 
-echo "----------------------------------------"
-echo "Developer making code changes..."
-echo "# changes" >> src/api/data_sync.py
-echo "<!-- changes -->" >> src/ui/dashboard.html
+echo "== Resetting to $BASE and pulling latest =="
+git checkout "$BASE"
+git pull
+
+echo "== (Re)creating branch $BRANCH =="
+
+git checkout -B "$BRANCH"
+
+echo "== Making a tiny, visible change =="
+mkdir -p src/ui
+echo "<!-- A11y tweak $STAMP -->" >> src/ui/dashboard.html
+echo "# a11y audit $STAMP" >> src/ui/README_A11Y.md
+
+git add src/ui/dashboard.html src/ui/README_A11Y.md
 
 
-tail -n 3 src/api/data_sync.py
-tail -n 3 src/ui/dashboard.html
+git commit -m "$TASK_ID: FEAT-110 Accessibility – demo change $STAMP" || \
+git commit --allow-empty -m "$TASK_ID: FEAT-110 Accessibility – empty demo change $STAMP"
 
-echo "----------------------------------------"
-echo "Staging and committing changes..."
-git add src/api/data_sync.py src/ui/dashboard.html
+echo "== Pushing branch =="
+git push -u origin "$BRANCH"
 
-git commit -m "CU-86c6e3bk2 - FEAT-110 Accessibility Enhancements"
-
-echo "----------------------------------------"
-echo "Pushing branch to GitHub..."
-git push -u origin "CU-86c6e3bk2_FEAT-110-Accessibility-Enhancements_John-Tomkins"
-
-echo "----------------------------------------"
-echo "✅ Done! Branch pushed successfully."
-echo "----------------------------------------"
+echo "DONE"
