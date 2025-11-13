@@ -1,1 +1,3 @@
 I've found a bug. The Smart Sensor Dashboard crashes when I switch between regions.
+
+Please move this bug to IN PROGRESS. I'm going to start working on it now, please assign me to the bug.
